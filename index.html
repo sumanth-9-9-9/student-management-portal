@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Student Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="side" id="side" aria-label="Main navigation">
+  <div class="brand"><span class="logo"><i class="fa-solid fa-graduation-cap"></i></span><b>Student Portal</b></div>
+  <nav id="nav"></nav>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+<div class="main">
+  <header class="top">
+    <button class="icon-btn" data-act="drawer" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    <button class="icon-btn desk" data-act="collapse" aria-label="Collapse sidebar"><i class="fa-solid fa-angles-left"></i></button>
+    <button class="searchbtn" data-act="search"><i class="fa-solid fa-magnifying-glass"></i><span>Search pages and actions</span><kbd>Ctrl K</kbd></button>
+    <span class="date" id="today"></span>
+    <button class="icon-btn" data-act="theme" aria-label="Toggle theme"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+    <div class="dd-wrap">
+      <button class="icon-btn" data-act="bell" aria-label="Notifications"><i class="fa-solid fa-bell"></i><i class="dot"></i></button>
+      <div class="dropdown" id="bellMenu">
+        <h4>Notifications</h4>
+        <a data-go="assignments"><b>Assignment due soon</b><small>Deep Learning Lab Report · 2 days</small></a>
+        <a data-go="exams"><b>Mid-semester exam schedule</b><small>Published today</small></a>
+        <a data-go="announcements"><b>New announcement</b><small>Library hours extended</small></a>
+      </div>
+    </div>
+    <button class="chip" data-go="profile"><span class="av sm" data-avatar></span><span class="chip-name" data-bind="fullName"></span></button>
+  </header>
+  <main id="view" tabindex="-1"></main>
+  <footer class="foot">Frontend demo. Data and photos stay in this browser only. A real portal needs a backend, database, secure login and server-side image storage.</footer>
+</div>
+
+<input type="file" id="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" hidden>
+
+<div class="modal" id="photoModal" aria-hidden="true" role="dialog" aria-label="Profile photo">
+  <div class="sheet small">
+    <h3>Preview photo</h3>
+    <div class="prev"><img id="prevImg" alt="Selected photo preview"></div>
+    <p class="err" id="photoErr" role="alert"></p>
+    <div class="row-end">
+      <button class="btn ghost" data-act="photo-cancel">Cancel</button>
+      <button class="btn" data-act="photo-save">Save photo</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="editModal" aria-hidden="true" role="dialog" aria-label="Edit profile">
+  <form class="sheet" id="editForm" novalidate>
+    <h3>Edit profile</h3>
+    <div id="editFields"></div>
+    <div class="row-end sticky">
+      <button type="button" class="btn ghost" data-act="edit-cancel">Cancel</button>
+      <button type="submit" class="btn">Save changes</button>
+    </div>
+  </form>
+</div>
+
+<div class="modal" id="searchModal" aria-hidden="true" role="dialog" aria-label="Search">
+  <div class="sheet small top">
+    <input id="q" type="search" placeholder="Type to search…" autocomplete="off">
+    <ul id="results"></ul>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
